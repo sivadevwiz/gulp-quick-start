@@ -1,0 +1,13 @@
+.dark {
+  background: LightCyan;
+  &:hover {
+    background: DarkCyan;
+  }
+  &::before {
+    content: "";
+    display: block;
+  }
+  > h3 {
+    border-bottom: 1px solid white;
+  }
+}
