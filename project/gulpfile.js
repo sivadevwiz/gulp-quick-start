@@ -50,7 +50,7 @@ const processCSS = () => {
   .pipe(gulp.dest("./dist/css/min"));
 }
 
-const concatJS = () => {
+const processJS = () => {
   return gulp.src("./src/JS/**/*.js")
   .pipe(beautify())
   .pipe(concat("scripts.js"))
@@ -87,9 +87,9 @@ exports.minifyCSS = minifyCSS;
 exports.concatCSS = concatCSS;
 exports.processCSS = processCSS;
 exports.clearDist = clearDist;
-exports.concatJS = concatJS;
+exports.processJS = processJS;
 exports.beautifySourceJS = beautifySourceJS;
 exports.minifyJS = minifyJS;
 
 
-exports.default = parallel(series(style,processCSS), concatJS);
+exports.default = parallel(series(style,processCSS), series(processJS, minifyJS));
